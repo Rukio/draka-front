@@ -1,7 +1,6 @@
-<template>
-  <div>
-    <NuxtPage />
-  </div>
+<template lang="pug">
+div
+  NuxtPage
 </template>
 <style lang="sass">
 @use "~/assets/styles/normalize.css"

@@ -1,46 +1,42 @@
-<template>
-	<div class="phases">
-		<div v-for="phase in phasesResult" classes="phase">
-			<div v-if="phase.type === 1" class="phase-elimination">
-				<div v-for="tour in phase.tours" class="phase-tour">
-					<div v-for="game in tour" class="phase-game">
-						<div class="game-teams">
-							<div v-for="team in game.teams" class="game-team">
-								<div class="team-players">
-									<div v-for="player in team.players" class="team-player">{{ player.name }}</div>
-								</div>
-								<div class="team-score">{{ team.score || '-' }}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<template lang="pug">
+.phases
+	.phase(v-for="phase in phases")
+		.phase-elimination(v-if="phase.type === 1")
+			.phase-tour(v-for="tour in phase.tours")
+				.phase-game(v-for="game in tour")
+					.game-teams
+						.game-team(v-for="team in game.teams")
+							.team-players
+								.team-player(v-for="player in team.players") {{ player.name }}
+							.team-score {{ team.score || '-' }}
 </template>
 
 <script setup>
 import { graphElimination } from './mocks';
 
-const graph = graphElimination;
-const phasesResult = [];
+const getPhases = () => {
+	const phasesResult = [];
+	const graph = graphElimination;
 
-const phases = graph.phases;
+	const phasesLocal = graph.phases;
 
-phases.forEach(phase => {
-	const data = phase;
-	const tourCount = phase.games.reduce((acc, game) => game.tour > acc ? game.tour : acc, 0);
+	phasesLocal.forEach(phase => {
+		const data = phase;
+		const tourCount = phase.games.reduce((acc, game) => game.tour > acc ? game.tour : acc, 0);
 
-	data.tours = [];
+		data.tours = [];
 
-	for (let i = 1; i < tourCount + 1; i++) {
-		data.tours.push(phase.games.filter(game => game.tour === i));
-	}
+		for (let i = 1; i < tourCount + 1; i++) {
+			data.tours.push(phase.games.filter(game => game.tour === i));
+		}
 
-	phasesResult.push(data);
-});
+		phasesResult.push(data);
+	});
 
-console.log(phasesResult);
+	return phasesResult;
+}
+
+const phases = ref(getPhases())
 </script>
 
 <style lang="sass">
