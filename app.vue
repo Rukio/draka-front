@@ -1,7 +1,7 @@
 <template lang="pug">
-div
-  NuxtPage
+    button vk auth
 </template>
+
 <style lang="sass">
 @use "~/assets/styles/normalize.css"
 @use "~/assets/styles/reset.css"
