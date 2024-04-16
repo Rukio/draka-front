@@ -2,48 +2,27 @@
 .phases
 	.phase(v-for="phase in phases")
 		.phase-elimination(v-if="phase.type === 1")
-			.phase-tour(v-for="tour in phase.tours")
-				.phase-game(v-for="game in tour")
-					.game-teams
-						.game-team(v-for="team in game.teams")
-							.team-players
-								.team-player(v-for="player in team.players") {{ player.name }}
-							.team-score {{ team.score || '-' }}
+			.phase-stage(v-for="stage in phase.stages")
+				.phase-tour(v-for="tour in stage.tours")
+					.phase-game(v-for="game in tour.games")
+						.game-teams
+							.game-team(v-for="team in game.teams")
+								.team-players
+									.team-player(v-for="player in team.players") {{ player.name }}
+								.team-score {{ team.score || '-' }}
 </template>
 
 <script setup>
 import { graphElimination } from './mocks';
 
-const getPhases = () => {
-	const phasesResult = [];
-	const graph = graphElimination;
-
-	const phasesLocal = graph.phases;
-
-	phasesLocal.forEach(phase => {
-		const data = phase;
-		const tourCount = phase.games.reduce((acc, game) => game.tour > acc ? game.tour : acc, 0);
-
-		data.tours = [];
-
-		for (let i = 1; i < tourCount + 1; i++) {
-			data.tours.push(phase.games.filter(game => game.tour === i));
-		}
-
-		phasesResult.push(data);
-	});
-
-	return phasesResult;
-}
-
-const phases = ref(getPhases())
+const phases = ref(graphElimination.phases)
 </script>
 
 <style lang="sass">
 	.phase:not(:last-child)
 		margin-bottom: 25px
 
-	.phase-elimination
+	.phase-stage
 		display: flex
 
 	.phase-tour
