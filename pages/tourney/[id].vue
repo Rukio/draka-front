@@ -1,10 +1,6 @@
 <script setup>
 import { graphElimination } from './mocks'
 
-const test = {
-  key: 'Value',
-}
-
 function getPhases() {
   const phasesResult = []
   const graph = graphElimination
@@ -26,7 +22,6 @@ function getPhases() {
 }
 
 const phases = ref(getPhases())
-console.log('test1')
 </script>
 
 <template lang="pug">

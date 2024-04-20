@@ -9,5 +9,5 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
   },
-  extends: ['@nuxt/eslint-config'],
+  extends: ['@nuxt/eslint-config', 'vue/vue3-essential'],
 }
