@@ -1,7 +1,5 @@
-<template lang="pug">
-div
-  NuxtPage
-</template>
+<template lang="pug"></template>
+
 <style lang="sass">
 @use "~/assets/styles/normalize.css"
 @use "~/assets/styles/reset.css"
