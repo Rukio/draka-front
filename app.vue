@@ -1,6 +1,4 @@
-<template lang="pug">
-    button vk auth
-</template>
+<template lang="pug"></template>
 
 <style lang="sass">
 @use "~/assets/styles/normalize.css"

@@ -42,30 +42,30 @@ const phases = ref(getPhases())
     margin-bottom: 25px
 
 .phase-elimination
-	display: flex
+    display: flex
 
 .phase-tour
-	display: flex
-	flex-direction: column
-	justify-content: center
-	margin-right: 4rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+    margin-right: 4rem
 
 .phase-game
-	border: 0.1rem solid white
-	margin-bottom: 4rem
+    border: 0.1rem solid white
+    margin-bottom: 4rem
 
 .game-team
-	padding: 0.5rem
-	display: flex
-	justify-content: space-between
-	border-bottom: 0.1rem solid white
+    padding: 0.5rem
+    display: flex
+    justify-content: space-between
+    border-bottom: 0.1rem solid white
 
 .team
-	&-players
-		display: flex
-		margin-right: 1.5rem
+    &-players
+        display: flex
+        margin-right: 1.5rem
 
-	&-player
-		&:not(:last-child)
-			margin-right: 2.5rem
+    &-player
+        &:not(:last-child)
+            margin-right: 2.5rem
 </style>
